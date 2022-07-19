@@ -1,6 +1,7 @@
 // ISSUES: 
 // 1. Start with 0
 // 2. Make +/- & % functional
+// 3. Default to 0
 
 /* eslint-disable default-case */
 import { useReducer } from 'react'
