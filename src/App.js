@@ -1,8 +1,8 @@
 /* eslint-disable default-case */
 import { useReducer } from 'react'
 import DigitButton from './DigitButton'
-import ZeroButton from './ZeroButton'
 import OperationButton from './OperationButton'
+import ZeroButton from './ZeroButton'
 import GreyOperationButton from './GreyOperationButton'
 import './styles.css'
 
@@ -19,7 +19,7 @@ function reducer(state, { type, payload }) {
       if (state.overwrite) {
         return {
           ...state,
-          currentOperand: payload.digit,
+          currentValue: payload.digit,
           overwrite: false
         }
       }  
@@ -52,11 +52,11 @@ function reducer(state, { type, payload }) {
           ...state,
           previousValue: evaluate(state),
           operation: payload.operation,
-          currentValue: state.currentValue
+          currentValue: null
         }
       case ACTIONS.CLEAR:
         return {
-          currentValue: 0
+          currentValue: null
         }
       case ACTIONS.EVALUATE:
         if (
@@ -112,11 +112,11 @@ function formatOperand(value) {
   const [integer, decimal] = value.split(".")
   if (decimal == null) return INTEGER_FORMATTER.format(integer)
   return `${INTEGER_FORMATTER.format(integer)}.${decimal}`
-}
+} 
 
 function App() {
   const [{ currentValue, previousValue, operation }, dispatch] = useReducer(reducer, {})
-  
+  // console.log(previousValue, currentValue)
   return (
     <div className="calculator-grid">
       <div className="output">
@@ -173,7 +173,7 @@ export default App;
 //       if (state.overwrite) {
 //         return {
 //           ...state,
-//           currentOperand: payload.digit,
+//           currentValue: payload.digit,
 //           overwrite: false
 //         }
 //       }  
