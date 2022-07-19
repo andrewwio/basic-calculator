@@ -1,3 +1,7 @@
+// ISSUES: 
+// 1. Start with 0
+// 2. Make +/- & % functional
+
 /* eslint-disable default-case */
 import { useReducer } from 'react'
 import DigitButton from './DigitButton'
@@ -94,12 +98,12 @@ function evaluate({ currentValue, previousValue, operation }) {
     case "÷":
       computation = prev / current
       break
-    case "+/-":
-      computation = prev * -1
-      break
-    case "%":
-      computation = prev / 100
-      break
+    // case "+/-":
+    //   computation = prev * -1
+    //   break
+    // case "%":
+    //   computation = prev * current / 100
+    //   break
   }
   return computation.toString()
 }
