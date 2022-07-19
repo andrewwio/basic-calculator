@@ -55,7 +55,9 @@ function reducer(state, { type, payload }) {
           currentValue: state.currentValue
         }
       case ACTIONS.CLEAR:
-        return {}
+        return {
+          currentValue: 0
+        }
       case ACTIONS.EVALUATE:
         if (
           state.operation == null ||
@@ -119,10 +121,10 @@ function App() {
     <div className="calculator-grid">
       <div className="output">
         <div className="previous-value">
-          {previousValue} {operation}
+          {formatOperand(previousValue)} {operation}
         </div>
         <div className="current-value">
-          {currentValue}
+          {formatOperand(currentValue)}
         </div>
       </div>
       <button className="grey" onClick={() => dispatch({ type: ACTIONS.CLEAR })}>AC</button>
