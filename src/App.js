@@ -2,6 +2,9 @@
 // 1. Start with 0
 // 2. Make +/- & % functional
 // 3. Default to 0
+// 4. Change operation when two operations are clicked back to back
+// 5. Display previousValue in main output div
+// 6. If you click "." first, then the app crashes
 
 /* eslint-disable default-case */
 import { useReducer } from 'react'
@@ -129,7 +132,7 @@ function App() {
           {formatOperand(previousValue)} {operation}
         </div>
         <div className="current-value">
-          {formatOperand(currentValue)}
+          {formatOperand(currentValue)} {formatOperand(previousValue)}
         </div>
       </div>
       <button className="grey" onClick={() => dispatch({ type: ACTIONS.CLEAR })}>AC</button>
